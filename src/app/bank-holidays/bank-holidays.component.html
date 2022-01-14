@@ -1,0 +1,56 @@
+<div fxLayout="column" fxLayoutAlign="center stretch" fxFlexFill class="outlet" >
+
+
+  <mat-card style="margin: 15%;" fxLayout="column" fxLayoutGap = "20px">
+    <div fxLayout="row">
+      <mat-progress-bar color = 'accent' mode="indeterminate" *ngIf="onGoingRequest"></mat-progress-bar>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap = "20px">
+      <div>
+        <input
+          matInput
+          placeholder="Select Date Range"
+          type="text"
+          ngxDaterangepickerMd
+          [(ngModel)]="selected"
+          [showCustomRangeLabel]="true"
+          [alwaysShowCalendars]="true"
+          [ranges]="ranges"
+          [linkedCalendars]="true"
+          [showClearButton]="true"
+          autocomplete="off"
+          style="padding: 7px;"
+        />
+      </div>
+
+      <div>
+        <button mat-raised-button color="accent" [disabled]="selected && (!selected.startDate || !selected.endDate)"
+        (click)="getHolidays()">
+          Show Holidays
+        </button>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-around start">
+      <div *ngFor="let holiday of filteredHolidays" fxFlex = '30'>
+        <span class="division-name">{{holiday.division}}</span>
+
+        <mat-list *ngFor="let day of holiday.events">
+          <mat-list-item  class="list-items">
+            <mat-icon mat-list-icon>event</mat-icon>
+            <div mat-line>{{day.date}} -- {{day.title}}</div>
+          </mat-list-item>
+        </mat-list>
+
+        <mat-list *ngIf="!holiday.events.length">
+          <mat-list-item>
+            No Holidays
+          </mat-list-item>
+        </mat-list>
+
+      </div>
+    </div>
+
+  </mat-card>
+</div>

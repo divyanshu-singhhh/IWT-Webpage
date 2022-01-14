@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.blog-card{
+  width: 50%;
+  margin: 10px;
+}
+
+.blog{
+  margin: 2px 0;
+}
+
+.outlet {
+  background: linear-gradient(to right, #aa4b6b, #6b6b83, #3b8d99) ;
+  min-height: 100%;
+}
+
+.mat-list-base .mat-list-item .mat-list-item-content {
+  padding: 0px !important
+}
+
+
+
